@@ -1,0 +1,136 @@
+.wrapper{
+    border: solid 2px;
+    margin-top: 5%;
+    background-size: 100%;
+}
+
+
+
+.top{
+    border: solid 2px;
+    font-size: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.CountLeft{
+    margin-left: 2%;
+    justify-content: start;
+    display: flex;
+}
+.CountRight{
+    margin-right: 2%;
+    justify-content: end;
+    display: flex;
+}
+
+.mid{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+
+}
+
+
+.left{
+    margin-left: 2%;
+    margin-right: 2%;
+    padding-top: 2%;
+}
+
+.right{
+    margin-left: 2%;
+    margin-right: 2%;
+    padding-top: 2%;
+}
+
+
+
+
+
+
+
+
+
+.wave-btn_text{
+    position: relative;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    display: inline-block;
+    color: black;
+    text-decoration: none;
+    padding: .2em 2em;
+    border-color: rgb(158, 106, 226);
+    border: solid 2px;
+    border-radius: 10px 10px 10px 10px;
+    transition: 0.2s;
+}
+
+
+
+.wave-btn :hover { 
+    background: rgb(103, 226, 158); 
+    box-shadow: 2px 2px 2px black;
+}
+
+.wave-btn :active { background: rgb(150, 122, 228);}
+
+
+
+
+
+
+
+
+.knopki{
+    padding-top: 1%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.custom-radio {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+
+.custom-radio+label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+}
+
+
+.custom-radio+label::before {
+    content: '';
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid #adb5bd;
+    border-radius: 50%;
+    margin-right: 0.5em;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
+}
+
+
+.custom-radio:not(:disabled):not(:checked)+label:hover::before {
+    border-color: rgb(117, 5, 117);
+    background-color:  rgb(158, 106, 226);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+}
+
+
+
+.custom-radio:focus+label::before {
+    box-shadow: 0 0 0 0.3rem rgb(158, 106, 226);
+}
+
