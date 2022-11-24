@@ -71,11 +71,13 @@
 
 
 .wave-btn :hover { 
-    background: rgb(103, 226, 158); 
+    background: rgb(230, 219, 238); 
     box-shadow: 2px 2px 2px black;
 }
 
-.wave-btn :active { background: rgb(150, 122, 228);}
+.wave-btn :active { 
+    background: rgb(150, 122, 228);
+}
 
 
 
@@ -134,3 +136,11 @@
     box-shadow: 0 0 0 0.3rem rgb(158, 106, 226);
 }
 
+
+.optin{
+    padding: 6% 0 0 2%;
+}
+
+.input{
+    width: 60px;
+}

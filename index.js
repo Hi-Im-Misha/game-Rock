@@ -4,9 +4,20 @@ resultCountRight = document.querySelector(".CountRight");
 pictureLeft = document.querySelector(".left");
 pictureRight = document.querySelector(".right");
 
-btnElement = document.querySelector(".btn");
 resultElement = document.querySelector(".result"); 
 radioButtons = document.querySelectorAll('[name="Choice"]'); 
+
+inputElement = document.querySelector('[name="number"]')
+btnElement = document.querySelector(".btn");
+
+
+btnElement.addEventListener("click", function() {
+    cheslo = parseInt(inputElement.value)
+    console.log(cheslo);
+    console.log(typeof(cheslo));
+});
+
+
 let myChoice = [];
 const leftFoto = document.getElementById('left')
 const rightFoto = document.getElementById('right')
@@ -35,6 +46,7 @@ document.getElementById("MyButton").onclick = function(){
 
                     console.log(myChoice[0])
                     console.log(computer);
+
                     
                     if (myChoice[0] === choice[0] && computer === choice[1]) {
                         leftFoto.src='img/Rock.png';
@@ -93,9 +105,7 @@ document.getElementById("MyButton").onclick = function(){
                     }
                     if (computerCount === NumberWins){
                         alert(`Конец игры счет ${myCount} : ${computerCount} Компьютер Победил!`)
-
-                    }
-                    */
+                    }*/
 
 
                     resultCountLeft.innerHTML = `MyCount: ${myCount}`;
