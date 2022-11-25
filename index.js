@@ -7,15 +7,16 @@ pictureRight = document.querySelector(".right");
 resultElement = document.querySelector(".result"); 
 radioButtons = document.querySelectorAll('[name="Choice"]'); 
 
-inputElement = document.querySelector('[name="number"]')
-btnElement = document.querySelector(".btn");
+inputElement = document.querySelector(".input")
+/*var x = document.getElementById("myText").placeholder;*/
+/*btnElement = document.querySelector(".btn");
 
 
 btnElement.addEventListener("click", function() {
     cheslo = parseInt(inputElement.value)
     console.log(cheslo);
     console.log(typeof(cheslo));
-});
+});*/
 
 
 let myChoice = [];
@@ -24,12 +25,11 @@ const rightFoto = document.getElementById('right')
 
 
 
-document.getElementById("MyButton").onclick = function(){   
-        /*var NumberWins = prompt('?')
-        NumberWins = Number(NumberWins)*/
+document.getElementById("MyButton").onclick = function(){  
+    var NumberWins = parseInt(inputElement.value);
 
-    let myCount = 0
-    let computerCount = 0
+    let myCount = 0;
+    let computerCount = 0;
     const choice = ['камень','ножницы','бумага'];
 
             radioButtons.forEach(element => { 
@@ -39,10 +39,8 @@ document.getElementById("MyButton").onclick = function(){
                     let random = Math.floor(Math.random() * choice.length);
                     let computer = choice[random];
             
-
-
-                        myChoice.shift(element.value);                        
-                        myChoice.push(element.value);                          
+                    myChoice.shift(element.value);                        
+                    myChoice.push(element.value);                          
 
                     console.log(myChoice[0])
                     console.log(computer);
@@ -100,12 +98,17 @@ document.getElementById("MyButton").onclick = function(){
                     }
 
 
-                    /*if (myCount === NumberWins){
+                    console.log(NumberWins);
+                    console.log(typeof(NumberWins));
+
+                    if (myCount === NumberWins){
                         alert(`Конец игры счет ${myCount} : ${computerCount}  Победил!`)
+                        location.reload();
                     }
                     if (computerCount === NumberWins){
                         alert(`Конец игры счет ${myCount} : ${computerCount} Компьютер Победил!`)
-                    }*/
+                        location.reload();
+                    }
 
 
                     resultCountLeft.innerHTML = `MyCount: ${myCount}`;
