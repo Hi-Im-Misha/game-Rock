@@ -1,3 +1,4 @@
+bottomPlay = document.getElementById("MyButton")
 resultCountLeft = document.querySelector(".CountLeft");
 resultCountRight = document.querySelector(".CountRight");
 
@@ -9,6 +10,10 @@ radioButtons = document.querySelectorAll('[name="Choice"]');
 
 inputElement = document.querySelector(".input")
 placeholder = document.getElementById("myText").placeholder;
+
+outputElement = document.querySelector(".output")
+statusBottomYes = document.querySelector(".statusBottomYes")
+statusBottomNo = document.querySelector(".statusBottomNo")
 
 /*btnElement = document.querySelector(".btn");
 
@@ -23,10 +28,16 @@ btnElement.addEventListener("click", function() {
 let myChoice = [];
 const leftFoto = document.getElementById('left')
 const rightFoto = document.getElementById('right')
+const audiofirst = new Audio()//"https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/CP.mp3");
+const audiosecond = new Audio()//"https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/SD0025.mp3");
 
 
 
-document.getElementById("MyButton").onclick = function(){  
+
+bottomPlay.onclick = function(){  
+        audiofirst.play();
+
+
     var NumberWins = parseInt(inputElement.value);
 
     let myCount = 0;
@@ -34,20 +45,25 @@ document.getElementById("MyButton").onclick = function(){
     const choice = ['камень','ножницы','бумага'];
 
             radioButtons.forEach(element => { 
+                
                 for (let a = 0; a <  1; a++) {                   
-                    element.addEventListener("change", function(){  
-                    
+                    element.addEventListener("change", function(){ 
+
                     let random = Math.floor(Math.random() * choice.length);
                     let computer = choice[random];
+
+                    
             
                     myChoice.shift(element.value);                        
                     myChoice.push(element.value);                          
 
                     console.log(myChoice[0])
                     console.log(computer);
-
+                    
+                    outputElement.innerHTML = `Computer: ${computer} <p>MyChoice:${myChoice}</p>`;
                     
                     if (myChoice[0] === choice[0] && computer === choice[1]) {
+                        audiosecond.play();
                         leftFoto.src='img/Rock.png';
                         rightFoto.src='img/Scissors.png';
                         ++myCount
@@ -55,6 +71,7 @@ document.getElementById("MyButton").onclick = function(){
                     }
                     
                     if (myChoice[0] === choice[1] && computer === choice[2]) {
+                        audiosecond.play();
                         leftFoto.src='img/Scissors.png';
                         rightFoto.src='img/Paper.png';
                         ++myCount
@@ -62,6 +79,7 @@ document.getElementById("MyButton").onclick = function(){
                     }
 
                     if (myChoice[0] === choice[2] && computer === choice[0]) {
+                        audiosecond.play();
                         leftFoto.src='img/Paper.png';
                         rightFoto.src='img/Rock.png';
                         ++myCount
@@ -71,6 +89,7 @@ document.getElementById("MyButton").onclick = function(){
 
 
                     if (computer === choice[0] && myChoice[0] === choice[1]) {
+                        audiosecond.play();
                         rightFoto.src='img/Rock.png';
                         leftFoto.src='img/Scissors.png';
                         ++computerCount
@@ -78,6 +97,7 @@ document.getElementById("MyButton").onclick = function(){
                     }
 
                     if (computer === choice[1] && myChoice[0] === choice[2]) {
+                        audiosecond.play();
                         rightFoto.src='img/Scissors.png';
                         leftFoto.src='img/Paper.png';
                         ++computerCount
@@ -85,6 +105,7 @@ document.getElementById("MyButton").onclick = function(){
                     }
 
                     if (computer === choice[2] && myChoice[0] === choice[0]) {
+                        audiosecond.play();
                         rightFoto.src='img/Paper.png';
                         leftFoto.src='img/Rock.png';
                         ++computerCount
@@ -93,6 +114,7 @@ document.getElementById("MyButton").onclick = function(){
 
 
                     if (computer === myChoice[0]) {
+                        audiosecond.play();
                         leftFoto.src='img/moloko.png';
                         rightFoto.src='img/moloko.png';
                         document.querySelector('[name="Choice"]:checked').checked = false;
@@ -101,8 +123,6 @@ document.getElementById("MyButton").onclick = function(){
 
                     if (isFinite(NumberWins)=== false) {
                         NumberWins = placeholder
-                        console.log(NumberWins);
-                        console.log(typeof(NumberWins));
                     }
 
                     if (myCount == NumberWins){
@@ -117,10 +137,20 @@ document.getElementById("MyButton").onclick = function(){
 
                     resultCountLeft.innerHTML = `MyCount: ${myCount}`;
                     resultCountRight.innerHTML = `Computer: ${computerCount}`;
+
                     
             });
         };
     });
 };
 
+
+statusBottomYes.onclick = function(){
+    outputElement.style.visibility='visible'
+}
+
+
+statusBottomNo.onclick = function(){
+    outputElement.style.visibility='hidden'
+}
 

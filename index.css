@@ -48,9 +48,6 @@ html {
     top: 0;
 }
 
-.logo{
-    padding-left: 10px;
-}
 
 body {
     background: url(img/LxYm3GhonW0.jpg) no-repeat;
@@ -192,7 +189,17 @@ ul {
 }
 
 
-
+.a{
+    border-bottom: 1px solid #e9e7e7;
+    font-size: 18px;
+    color: #484848;
+    font-family: 'Kurale', serif;
+    padding: 10px 20px;
+    margin: 0 20px;
+    text-align: center;
+    padding: 10px 0;
+    margin: 0 10px; 
+}
 
 
 
@@ -274,12 +281,13 @@ ul {
 
 
 .wave-btn :hover { 
-    background: rgb(230, 219, 238); 
+    background: rgb(204, 203, 212); 
     box-shadow: 2px 2px 2px black;
+    transform: scale(1.1, 1.1);
 }
 
 .wave-btn :active { 
-    background: rgb(150, 122, 228);
+    background: rgb(180, 163, 228);
 }
 
 
@@ -340,3 +348,11 @@ ul {
 }
 
 
+
+
+.output{
+    margin: 5% 1% 5% 1%;
+    visibility: hidden;
+    margin-top: 2%;
+    border: 1px solid;
+}
