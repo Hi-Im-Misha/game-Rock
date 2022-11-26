@@ -8,7 +8,8 @@ resultElement = document.querySelector(".result");
 radioButtons = document.querySelectorAll('[name="Choice"]'); 
 
 inputElement = document.querySelector(".input")
-/*var x = document.getElementById("myText").placeholder;*/
+placeholder = document.getElementById("myText").placeholder;
+
 /*btnElement = document.querySelector(".btn");
 
 
@@ -98,14 +99,17 @@ document.getElementById("MyButton").onclick = function(){
                     }
 
 
-                    console.log(NumberWins);
-                    console.log(typeof(NumberWins));
+                    if (isFinite(NumberWins)=== false) {
+                        NumberWins = placeholder
+                        console.log(NumberWins);
+                        console.log(typeof(NumberWins));
+                    }
 
-                    if (myCount === NumberWins){
-                        alert(`Конец игры счет ${myCount} : ${computerCount}  Победил!`)
+                    if (myCount == NumberWins){
+                        alert(`Конец игры счет ${myCount} : ${computerCount} Играк Победил!`)
                         location.reload();
                     }
-                    if (computerCount === NumberWins){
+                    if (computerCount == NumberWins){
                         alert(`Конец игры счет ${myCount} : ${computerCount} Компьютер Победил!`)
                         location.reload();
                     }
