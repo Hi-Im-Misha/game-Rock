@@ -6,7 +6,7 @@ pictureLeft = document.querySelector(".left");
 pictureRight = document.querySelector(".right");
 
 resultElement = document.querySelector(".result"); 
-radioButtons = document.querySelectorAll('[name="Choice"]'); 
+radioButtons = document.querySelectorAll('[name="Choice"]'); //Поменять By на SELECTOR
 
 inputElement = document.querySelector(".input")
 placeholder = document.getElementById("myText").placeholder;
@@ -23,7 +23,8 @@ btnElement.addEventListener("click", function() {
     console.log(cheslo);
     console.log(typeof(cheslo));
 });*/
-
+radioButtonssss = document.querySelectorAll('.a'); 
+console.log(radioButtonssss);
 
 let myChoice = [];
 const leftFoto = document.getElementById('left')
