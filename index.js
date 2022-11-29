@@ -36,9 +36,10 @@ choicePaper = document.getElementById("Choice3")*/
 
 
 const choice = ['камень','ножницы','бумага'];
-let myChoice = [];
+let emptyList = [];
 let myCount = 0;
 let computerCount = 0;
+let draw = 0;
 
 const audiofirst = new Audio()//"https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/CP.mp3");
 const audiosecond = new Audio()//"https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/SD0025.mp3");
@@ -46,25 +47,38 @@ const audiosecond = new Audio()//"https://s3-us-west-2.amazonaws.com/s.cdpn.io/2
 
 
 bottomPlay.onclick = function(){  
-        
+        // при нажатии на кнопку появляются радио кнопки
         audiofirst.play();
         var NumberWins = parseInt(inputElement.value);
 
-        for (let a = 0; a <  1; a++) {    
+        for (let a = 0; a <  1; a++) {  
+
             radioButtons.forEach(element => {     
                 element.addEventListener("change", function(){ 
-
-                        let random = Math.floor(Math.random() * choice.length);
-                        let computer = choice[random];
-
-                        myChoice.shift(element.value);                        
-                        myChoice.push(element.value);                          
-
-                        console.log(myChoice[0])
-                        console.log(computer);
                     
-            
-                        outputElement.innerHTML = `Computer: ${computer} <p>MyChoice:${myChoice}</p>`;
+                    
+                    function PlayerChoiceFunction(myChoice) {
+                        myChoice = emptyList.splice(0,1, element.value);                  
+                        return myChoice
+                    }PlayerChoiceFunction();
+                    
+                    myChoice = PlayerChoiceFunction();
+                    console.log(myChoice[0]);
+
+
+                    function СomputerChoiceFunction(computer) {
+                        random = Math.floor(Math.random() * choice.length);
+                        computer = choice[random];
+                        return computer  
+                    }СomputerChoiceFunction();
+                    computer = СomputerChoiceFunction();
+                    console.log(computer);
+                    
+
+
+                    function OptionMenuCount(output) {
+                        output = outputElement.innerHTML = `Computer: ${computer} <p>MyChoice:${myChoice}</p><p>Draw:${draw}</p>`;
+                    }OptionMenuCount();
 
                         
                         if (myChoice[0] === choice[0] && computer === choice[1]) {
@@ -119,6 +133,7 @@ bottomPlay.onclick = function(){
 
 
                         if (computer === myChoice[0]) {
+                            ++draw
                             audiosecond.play();
                             leftFoto.src='img/moloko.png';
                             rightFoto.src='img/moloko.png';
@@ -140,8 +155,12 @@ bottomPlay.onclick = function(){
                         }
 
 
-                        resultCountLeft.innerHTML = `MyCount: ${myCount}`;
-                        resultCountRight.innerHTML = `Computer: ${computerCount}`;
+
+                        function resultfunction(left, right) {
+                            right = resultCountRight.innerHTML = `Computer: ${computerCount}`;
+                            left =  resultCountLeft.innerHTML = `MyCount: ${myCount}`;
+                        }resultfunction();
+
 
             });
         });
