@@ -15,143 +15,145 @@ outputElement = document.querySelector(".output")
 statusBottomYes = document.querySelector(".statusBottomYes")
 statusBottomNo = document.querySelector(".statusBottomNo")
 
-/*btnElement = document.querySelector(".btn");
+leftFoto = document.getElementById('left')
+rightFoto = document.getElementById('right')
+
+/*choiceRock = document.getElementById("Choice1")
+choiceScissors = document.getElementById("Choice2")
+choicePaper = document.getElementById("Choice3")*/
+/* window.addEventListener('keyup', function(event) {
+                            switch (event.keyCode) {
+                                case 49:
+                                    myChoice[0] = 'камень'
+                                    break;
+                                case 50:
+                                    myChoice[0] = 'ножницы'
+                                    break;
+                                case 51:
+                                    myChoice[0] = 'бумага'
+                                    break;
+                            }*/
 
 
-btnElement.addEventListener("click", function() {
-    cheslo = parseInt(inputElement.value)
-    console.log(cheslo);
-    console.log(typeof(cheslo));
-});*/
-radioButtonssss = document.querySelectorAll('.a'); 
-console.log(radioButtonssss);
-
+const choice = ['камень','ножницы','бумага'];
 let myChoice = [];
-const leftFoto = document.getElementById('left')
-const rightFoto = document.getElementById('right')
+let myCount = 0;
+let computerCount = 0;
+
 const audiofirst = new Audio()//"https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/CP.mp3");
 const audiosecond = new Audio()//"https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/SD0025.mp3");
 
 
 
-
 bottomPlay.onclick = function(){  
+        
         audiofirst.play();
+        var NumberWins = parseInt(inputElement.value);
 
+        for (let a = 0; a <  1; a++) {    
+            radioButtons.forEach(element => {     
+                element.addEventListener("change", function(){ 
 
-    var NumberWins = parseInt(inputElement.value);
+                        let random = Math.floor(Math.random() * choice.length);
+                        let computer = choice[random];
 
-    let myCount = 0;
-    let computerCount = 0;
-    const choice = ['камень','ножницы','бумага'];
+                        myChoice.shift(element.value);                        
+                        myChoice.push(element.value);                          
 
-            radioButtons.forEach(element => { 
-                
-                for (let a = 0; a <  1; a++) {                   
-                    element.addEventListener("change", function(){ 
-
-                    let random = Math.floor(Math.random() * choice.length);
-                    let computer = choice[random];
-
+                        console.log(myChoice[0])
+                        console.log(computer);
                     
             
-                    myChoice.shift(element.value);                        
-                    myChoice.push(element.value);                          
+                        outputElement.innerHTML = `Computer: ${computer} <p>MyChoice:${myChoice}</p>`;
 
-                    console.log(myChoice[0])
-                    console.log(computer);
-                    
-                    outputElement.innerHTML = `Computer: ${computer} <p>MyChoice:${myChoice}</p>`;
-                    
-                    if (myChoice[0] === choice[0] && computer === choice[1]) {
-                        audiosecond.play();
-                        leftFoto.src='img/Rock.png';
-                        rightFoto.src='img/Scissors.png';
-                        ++myCount
-                        document.querySelector('[name="Choice"]:checked').checked = false;
-                    }
-                    
-                    if (myChoice[0] === choice[1] && computer === choice[2]) {
-                        audiosecond.play();
-                        leftFoto.src='img/Scissors.png';
-                        rightFoto.src='img/Paper.png';
-                        ++myCount
-                        document.querySelector('[name="Choice"]:checked').checked = false;
-                    }
+                        
+                        if (myChoice[0] === choice[0] && computer === choice[1]) {
+                            audiosecond.play();
+                            leftFoto.src='img/Rock.png';
+                            rightFoto.src='img/Scissors.png';
+                            ++myCount
+                            document.querySelector('[name="Choice"]:checked').checked = false;
+                        }
+                        
+                        if (myChoice[0] === choice[1] && computer === choice[2]) {
+                            audiosecond.play();
+                            leftFoto.src='img/Scissors.png';
+                            rightFoto.src='img/Paper.png';
+                            ++myCount
+                            document.querySelector('[name="Choice"]:checked').checked = false;
+                        }
 
-                    if (myChoice[0] === choice[2] && computer === choice[0]) {
-                        audiosecond.play();
-                        leftFoto.src='img/Paper.png';
-                        rightFoto.src='img/Rock.png';
-                        ++myCount
-                        document.querySelector('[name="Choice"]:checked').checked = false;
-                    }
+                        if (myChoice[0] === choice[2] && computer === choice[0]) {
+                            audiosecond.play();
+                            leftFoto.src='img/Paper.png';
+                            rightFoto.src='img/Rock.png';
+                            ++myCount
+                            document.querySelector('[name="Choice"]:checked').checked = false;
+                        }
 
 
 
-                    if (computer === choice[0] && myChoice[0] === choice[1]) {
-                        audiosecond.play();
-                        rightFoto.src='img/Rock.png';
-                        leftFoto.src='img/Scissors.png';
-                        ++computerCount
-                        document.querySelector('[name="Choice"]:checked').checked = false;
-                    }
+                        if (computer === choice[0] && myChoice[0] === choice[1]) {
+                            audiosecond.play();
+                            rightFoto.src='img/Rock.png';
+                            leftFoto.src='img/Scissors.png';
+                            ++computerCount
+                            document.querySelector('[name="Choice"]:checked').checked = false;
+                        }
 
-                    if (computer === choice[1] && myChoice[0] === choice[2]) {
-                        audiosecond.play();
-                        rightFoto.src='img/Scissors.png';
-                        leftFoto.src='img/Paper.png';
-                        ++computerCount
-                        document.querySelector('[name="Choice"]:checked').checked = false;
-                    }
+                        if (computer === choice[1] && myChoice[0] === choice[2]) {
+                            audiosecond.play();
+                            rightFoto.src='img/Scissors.png';
+                            leftFoto.src='img/Paper.png';
+                            ++computerCount
+                            document.querySelector('[name="Choice"]:checked').checked = false;
+                        }
 
-                    if (computer === choice[2] && myChoice[0] === choice[0]) {
-                        audiosecond.play();
-                        rightFoto.src='img/Paper.png';
-                        leftFoto.src='img/Rock.png';
-                        ++computerCount
-                        document.querySelector('[name="Choice"]:checked').checked = false;
-                    }
-
-
-                    if (computer === myChoice[0]) {
-                        audiosecond.play();
-                        leftFoto.src='img/moloko.png';
-                        rightFoto.src='img/moloko.png';
-                        document.querySelector('[name="Choice"]:checked').checked = false;
-                    }
+                        if (computer === choice[2] && myChoice[0] === choice[0]) {
+                            audiosecond.play();
+                            rightFoto.src='img/Paper.png';
+                            leftFoto.src='img/Rock.png';
+                            ++computerCount
+                            document.querySelector('[name="Choice"]:checked').checked = false;
+                        }
 
 
-                    if (isFinite(NumberWins)=== false) {
-                        NumberWins = placeholder
-                    }
-
-                    if (myCount == NumberWins){
-                        alert(`Конец игры счет ${myCount} : ${computerCount} Играк Победил!`)
-                        location.reload();
-                    }
-                    if (computerCount == NumberWins){
-                        alert(`Конец игры счет ${myCount} : ${computerCount} Компьютер Победил!`)
-                        location.reload();
-                    }
+                        if (computer === myChoice[0]) {
+                            audiosecond.play();
+                            leftFoto.src='img/moloko.png';
+                            rightFoto.src='img/moloko.png';
+                            document.querySelector('[name="Choice"]:checked').checked = false;
+                        }
 
 
-                    resultCountLeft.innerHTML = `MyCount: ${myCount}`;
-                    resultCountRight.innerHTML = `Computer: ${computerCount}`;
+                        if (isFinite(NumberWins) === false) {
+                            NumberWins = placeholder
+                        }
 
-                    
+                        if (myCount == NumberWins){
+                            alert(`Конец игры счет ${myCount} : ${computerCount} Играк Победил!`)
+                            location.reload();
+                        }
+                        if (computerCount == NumberWins){
+                            alert(`Конец игры счет ${myCount} : ${computerCount} Компьютер Победил!`)
+                            location.reload();
+                        }
+
+
+                        resultCountLeft.innerHTML = `MyCount: ${myCount}`;
+                        resultCountRight.innerHTML = `Computer: ${computerCount}`;
+
             });
-        };
-    });
+        });
+    };
 };
 
 
 statusBottomYes.onclick = function(){
     outputElement.style.visibility='visible'
+    
+        statusBottomNo.onclick = function(){
+            outputElement.style.visibility='hidden'
+        }
+
 }
-
-
-statusBottomNo.onclick = function(){
-    outputElement.style.visibility='hidden'
-}
-
