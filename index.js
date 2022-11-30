@@ -18,6 +18,9 @@ statusBottomNo = document.querySelector(".statusBottomNo")
 leftFoto = document.getElementById('left')
 rightFoto = document.getElementById('right')
 
+radioButtonsVisble = document.querySelector('.knopki')
+
+
 /*choiceRock = document.getElementById("Choice1")
 choiceScissors = document.getElementById("Choice2")
 choicePaper = document.getElementById("Choice3")*/
@@ -41,13 +44,14 @@ let myCount = 0;
 let computerCount = 0;
 let draw = 0;
 
-const audiofirst = new Audio()//"https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/CP.mp3");
-const audiosecond = new Audio()//"https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/SD0025.mp3");
+const audiofirst = new Audio("https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/CP.mp3");
+const audiosecond = new Audio("https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/SD0025.mp3");
 
 
 
 bottomPlay.onclick = function(){  
-        // при нажатии на кнопку появляются радио кнопки
+        radioButtonsVisble.style.visibility='visible'
+        radioButtonsVisble.style.opacity = "1";
         audiofirst.play();
         var NumberWins = parseInt(inputElement.value);
 
@@ -81,6 +85,8 @@ bottomPlay.onclick = function(){
                     }OptionMenuCount();
 
                         
+                        
+                    
                         if (myChoice[0] === choice[0] && computer === choice[1]) {
                             audiosecond.play();
                             leftFoto.src='img/Rock.png';

@@ -298,6 +298,9 @@ ul {
 
 
 .knopki{
+    opacity: 0.0;
+    visibility: hidden;
+    transition-duration: 2s;
     padding-top: 1%;
     display: flex;
     justify-content: space-around;
